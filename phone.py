@@ -42,8 +42,9 @@ class phone:
 
     def get_phone_num(self):
         while not self.urlQue.empty():
+            url=self.urlQue.get()
             try:
-                r = requests.get(self.urlQue.get())
+                r = requests.get(url)
                 if r.status_code == 200:
                     pattern = re.compile("</span>([^<]*)")
                     result = pattern.findall(r.content.decode(type))
